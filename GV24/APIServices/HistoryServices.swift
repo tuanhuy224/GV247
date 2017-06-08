@@ -22,7 +22,7 @@ class HistoryServices: APIService {
                 completion(json, nil)
                 break
             case .failure(let err):
-                completion(nil, err as! Error)
+                completion(nil, (err as! Error))
                 break
             }
         }

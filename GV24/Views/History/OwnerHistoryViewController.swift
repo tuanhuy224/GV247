@@ -32,7 +32,7 @@ class OwnerHistoryViewController: BaseViewController {
     }
     
     @IBAction func valueChanged(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
 
 }
