@@ -15,6 +15,8 @@ class HistoryViewCell: UITableViewCell {
     @IBOutlet weak var timeWork: UILabel!
     @IBOutlet weak var createdDate: UILabel!
     @IBOutlet weak var workNameLabel: UILabel!
+    @IBOutlet weak var estimateWorkTime: UILabel!
+    
     @IBOutlet weak var iconAlarm: UIImageView!{
         didSet{
             let icon = Ionicons.iosAlarm.image(32)

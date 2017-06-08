@@ -15,6 +15,16 @@ class FinishedWorkCell: UITableViewCell {
     @IBOutlet weak var dateImage: UIImageView!
     @IBOutlet weak var addressImage: UIImageView!
     
+    //Outlets UI to set data
+    @IBOutlet weak var workImage: UIImageView!
+    @IBOutlet weak var workNameLabel: UILabel!
+    @IBOutlet weak var workTypeLabel: UILabel!
+    @IBOutlet weak var workContentLabel: UILabel!
+    @IBOutlet weak var workSalaryLabel: UILabel!
+    @IBOutlet weak var workCreateAtLabel: UILabel!
+    @IBOutlet weak var workAddressLabel: UILabel!
+    @IBOutlet weak var workTimeLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

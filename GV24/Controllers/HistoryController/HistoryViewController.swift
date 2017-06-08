@@ -47,26 +47,17 @@ class HistoryViewController: BaseViewController {
         user = UserDefaultHelper.currentUser
         let params = ["process_ID":000000000000000000000005]
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
-        HistoryServices.sharedInstance.getWorkHistoryWith(url: urlHistory, param: params, header: headers) { (data, err) in
+        HistoryServices.sharedInstance.getWorkListWith(status: WorkStatus.Done, url: APIPaths().urlGetWorkListHistory(), param: params, header: headers) { (data, err) in
             if err == nil {
-                if let list = data?["data"] {
-                    for item in list {
-                        if let values = item.1 as? JSON {
-                            if let _id = values["process"]["_id"].string {
-                                if _id == "000000000000000000000005" {
-                                    let work = Work(json: item.1)
-                                    let history = work.history
-                                    let info = work.info
-                                    self.workList.append(work)
-                                }
-                            }
-                        }
+                if data != nil {
+                    self.workList.append(contentsOf: data!)
+                    DispatchQueue.main.async {
+                        self.historyTableView.reloadData()
                     }
-                    self.historyTableView.reloadData()
                 }
             }
             else {
-                print("Can not get the work done list from History")
+                print("Error occurred while geting work list with Work status is Done.")
             }
         }
     }
@@ -107,6 +98,22 @@ class HistoryViewController: BaseViewController {
         fromDateContainer.addSubview(bottomBorder)
     }
 
+    fileprivate func configureCell(cell: HistoryViewCell, indexPath: IndexPath) {
+        let work = workList[indexPath.item]
+        
+        if let imageString = work.info?.workName?.image {
+            let url = URL(string: imageString)
+            cell.imageWork.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
+        }
+        
+        cell.workNameLabel.text = work.info?.title
+        
+        let createAt = work.workTime?.startAt
+        let str = String(describing: createAt!)
+        
+        
+        
+    }
 
 }
 extension HistoryViewController:UITableViewDataSource{
@@ -117,13 +124,7 @@ extension HistoryViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = historyTableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryViewCell
         
-        let work = workList[indexPath.item]
-        cell.workNameLabel.text = work.info?.title
-        if let imageString = work.info?.workName?.image {
-            let url = URL(string: imageString)
-            cell.imageWork.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
-        }
-       
+        self.configureCell(cell: cell, indexPath: indexPath)
         
         return cell
     }

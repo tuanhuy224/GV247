@@ -10,6 +10,7 @@ import Foundation
 enum urlPath:String {
     case getListAround = "/en/more/getTaskAround"
     case getListHome = "/vi/auth/maid/login"
+    case getURLWorkListHistory = "en/maid/getAllTasks"
 //    case addManage = "/en/more/getTaskAround"
 //    case listWaitting = "/en/more/getTaskAround"
 //    case listInformation = "/en/more/getTaskAround"
@@ -21,6 +22,10 @@ struct APIPaths {
     
     func urlGetListProduct() -> String {
         return baseURL + urlPath.getListAround.rawValue
+    }
+    
+    func urlGetWorkListHistory() -> String {
+        return baseURL + urlPath.getURLWorkListHistory.rawValue
     }
     
 //    func urlAddProductToCart() -> String {
