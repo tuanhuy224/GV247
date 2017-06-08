@@ -31,7 +31,7 @@ class HistoryViewController: BaseViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         self.automaticallyAdjustsScrollViewInsets = false
         customControl()
-        print("token = \(UserDefaultHelper.getToken())")
+        print("token = \(UserDefaultHelper.getToken()!)")
     }
     
     override func decorate() {

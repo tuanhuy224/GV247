@@ -106,7 +106,7 @@ class APIService: NSObject {
             }
         }
     }
-    func getUrl(url:String,param:Parameters,header:HTTPHeaders,completion:@escaping((JSON?, Error?) -> ())) {
+    func getUrl(url:String,param:Parameters,header:HTTPHeaders,completion:@escaping(ResponseCompletion)) {
         Alamofire.request(url, method: .get, parameters: param, encoding: URLEncoding.default,headers:header).responseJSON { (response) in
             switch response.result{
             case .success(let value):
@@ -115,14 +115,14 @@ class APIService: NSObject {
                 if status == nil{return}
                 if status == false{
                     if let message = json["message"].string{
-                    completion(nil, message as? Error)
+                    completion(nil, message)
                     }
                 }
                 guard let data = json["data"].dictionary else{return}
                 print(data)
                 completion(json, nil)
             case .failure(let error):
-                completion(nil, error as? Error)
+                completion(nil, error.localizedDescription)
                 print(error)
             }
         }
