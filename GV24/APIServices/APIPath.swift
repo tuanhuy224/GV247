@@ -5,7 +5,7 @@
 //  Created by HuyNguyen on 6/7/17.
 //  Copyright © 2017 admin. All rights reserved.
 //
-
+//https://yukotest123.herokuapp.com/en/more/getTaskAround
 import Foundation
 enum urlPath:String {
     case getListAround = "/en/more/getTaskAround"
@@ -17,9 +17,9 @@ enum urlPath:String {
 }
 
 struct APIPaths {
-    let baseURL = "https://yukotest123.herokuapp.com/"
+    let baseURL = "https://yukotest123.herokuapp.com"
     
-    func urlGetListProduct() -> String {
+    func urlGetListAround() -> String {
         return baseURL + urlPath.getListAround.rawValue
     }
     

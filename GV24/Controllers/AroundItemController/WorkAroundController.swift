@@ -109,6 +109,7 @@ extension WorkAroundController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          let vc = AroundItemController(nibName: "AroundItemController", bundle: nil)
             vc.id = "\(arrays[indexPath.row].id!.id!)"
+            vc.name = "\(arrays[indexPath.row].id!.name!)"
             navigationController?.pushViewController(vc, animated: true)
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

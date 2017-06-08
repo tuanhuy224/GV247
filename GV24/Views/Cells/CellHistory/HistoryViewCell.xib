@@ -21,7 +21,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="95"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OJw-XG-7Bf" id="dem-v7-fdz">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="95"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="94.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nau an" translatesAutoresizingMaskIntoConstraints="NO" id="8EU-8A-QEv">
@@ -32,13 +32,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lau don nha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fze-be-NCT">
-                        <rect key="frame" x="70" y="8" width="78.5" height="17"/>
+                        <rect key="frame" x="70" y="8" width="81" height="17"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đã hoàn thành" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRE-zI-Q2n">
-                        <rect key="frame" x="70" y="28" width="65.5" height="12"/>
+                        <rect key="frame" x="70" y="28" width="68.5" height="12"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -51,13 +51,13 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 phut truoc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEp-Ro-KDC">
-                        <rect key="frame" x="222" y="28" width="60.5" height="12"/>
+                        <rect key="frame" x="222" y="28" width="64" height="12"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10/05/2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qj8-fR-18O">
-                        <rect key="frame" x="70" y="62" width="61.5" height="14"/>
+                        <rect key="frame" x="70" y="62" width="63" height="14"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -70,12 +70,12 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9h00am - 12h00am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9a-BP-wxD">
-                        <rect key="frame" x="207" y="62" width="87.5" height="14"/>
+                        <rect key="frame" x="207" y="62" width="92.5" height="14"/>
                         <fontDescription key="fontDescription" name="SFUIText-Light" family="SF UI Text" pointSize="10"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qy-7n-pTy">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qy-7n-pTy">
                         <rect key="frame" x="27.5" y="62" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="15" id="X65-gI-jbR"/>
@@ -115,6 +115,7 @@
                 <outlet property="createdDate" destination="Qj8-fR-18O" id="fq8-w1-W2o"/>
                 <outlet property="iconAlarm" destination="ADu-3e-VgC" id="eaf-Jf-QEg"/>
                 <outlet property="imageWork" destination="8EU-8A-QEv" id="TK8-9c-cMC"/>
+                <outlet property="lbDist" destination="dRE-zI-Q2n" id="UN1-Mb-i7N"/>
                 <outlet property="timeWork" destination="n9a-BP-wxD" id="yw9-ah-mOR"/>
                 <outlet property="workNameLabel" destination="fze-be-NCT" id="BQN-KO-1bH"/>
             </connections>

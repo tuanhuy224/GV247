@@ -11,14 +11,17 @@ import SwiftyJSON
 
 class Work: AppModel {
     var id:String?
-    var history:[String:Any]?
-    var stakeholders:[String:Any]?
+    var stakeholders:Stakeholders?
     var info:Info?
+    var dist:Dist?
+    var history:History?
     override init(json:JSON) {
         super.init()
         self.id = json["_id"].string
-        self.history = json["history"].dictionary
-        self.stakeholders = json["stakeholders"].dictionary
+        self.stakeholders = Stakeholders(json: json["stakeholders"])
         self.info = Info(json: json["info"])
+        self.dist = Dist(json: json["dist"])
+        self.history = History(json: json["history"])
     }
 }
+

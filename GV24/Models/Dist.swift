@@ -1,5 +1,5 @@
 //
-//  Around.swift
+//  Dist.swift
 //  GV24
 //
 //  Created by HuyNguyen on 6/8/17.
@@ -7,19 +7,15 @@
 //
 
 import Foundation
-import Foundation
 import SwiftyJSON
 
-
-class Around: AppModel {
-    var id:WorkName?
-    var count:Int?
+class Dist: AppModel {
+    var calculated: Double?
     override init() {
         super.init()
     }
     override init(json: JSON) {
         super.init(json: json)
-        self.count = json["count"].int
-        self.id = WorkName(json: json["_id"])
+        self.calculated = json["calculated"].double
     }
 }
