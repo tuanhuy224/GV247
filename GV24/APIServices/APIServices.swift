@@ -92,6 +92,7 @@ class APIService: NSObject {
         }
     
     }
+    
         
     func posturl(url:String,parameters:Parameters,completion: @escaping ((JSON?,Error?)->())){
         Alamofire.request(url, method: .post, parameters: parameters).responseJSON { (response) in

@@ -22,6 +22,7 @@ class AroundTask: APIService {
             }
         }
     }
+
    private func ArrayWork(json:JSON) -> [Work]? {
         var jsonArray:[Work] = [Work]()
         if let datas = json.array {

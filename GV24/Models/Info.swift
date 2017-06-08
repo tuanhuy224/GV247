@@ -13,6 +13,7 @@ class Info: AppModel {
     var title:String?
     var package:Package?
     var workName:WorkName?
+    var history:History?
     override init() {
         super.init()
     }
@@ -20,13 +21,12 @@ class Info: AppModel {
         super.init()
         self.title  = json["title"].string
         self.workName = WorkName(json: json["work"])
-    }
-   
+        self.history = History(json: json["history"])
+    }   
 }
 class Package: Info {
     var id:String?
     var name:String?
-
 }
 
 class WorkName:AppModel {

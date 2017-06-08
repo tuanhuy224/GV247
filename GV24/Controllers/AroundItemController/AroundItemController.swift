@@ -8,28 +8,39 @@
 
 import UIKit
 
-class AroundItemController: UIViewController {
+class AroundItemController: BaseViewController {
     @IBOutlet weak var tbAround: UITableView!
     var id:String?
+    var name:String?
+    var works = [Work]()
     override func viewDidLoad() {
         super.viewDidLoad()
         tbAround.register(UINib(nibName:"HistoryViewCell",bundle:nil), forCellReuseIdentifier: "historyCell")
-        sendDelegate()
+        loadAroundItem()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    func loadAroundItem(){
+        let url = "https://yukotest123.herokuapp.com/en/more/getTaskByWork"
+        let parameter:[String:Any] = ["work":id!,"lng": 106.6882557,"lat": 10.7677238,"maxDistance":300]
+        let apiClient = AroundTask.sharedInstall
+        apiClient.getWorkFromURL(url: url, parameter: parameter) { (works, string) in
+            if string == nil{
+                self.works = works!
+                self.tbAround.reloadData()
+            }
+        }
     }
-    func sendDelegate(){
-        
+    override func setupViewBase() {
+        self.title = name?.localize
     }
 }
 extension AroundItemController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return works.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:HistoryViewCell = tbAround.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryViewCell
+        cell.workNameLabel.text = works[indexPath.row].info?.title
+        cell.lbDist.text = "\(Int(works[indexPath.row].dist!.calculated!)) m"
         
         return cell
     }
