@@ -93,8 +93,8 @@ extension UIColor {
 extension URLSession{
 }
 
-extension Date {
-    fileprivate func convertISODateToString(isoDateStr: String, format: String) -> String? {
+extension String {
+    static func convertISODateToString(isoDateStr: String, format: String) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         dateFormatter.timeZone = TimeZone.current
@@ -103,7 +103,7 @@ extension Date {
         return dateFormatter.string(from: newDate!)
     }
     
-    fileprivate func convertISODateToDate(isoDateStr: String) -> Date? {
+    static func convertISODateToDate(isoDateStr: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         dateFormatter.timeZone = TimeZone.current
@@ -111,7 +111,7 @@ extension Date {
         return newDate
     }
     
-    fileprivate func convertDateToString(date: Date, withFormat: String) -> String? {
+    static func convertDateToString(date: Date, withFormat: String) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = withFormat
         dateFormatter.timeZone = TimeZone.current

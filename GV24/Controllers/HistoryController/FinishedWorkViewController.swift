@@ -7,23 +7,61 @@
 //
 
 import UIKit
+import Kingfisher
 
 class FinishedWorkViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    var work: Work?
+//    var ownerCommentList:[]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
         self.automaticallyAdjustsScrollViewInsets = false
         tableView.register(UINib(nibName: "FinishedWorkCell", bundle: nil), forCellReuseIdentifier: "FinishedWorkCell")
         tableView.register(UINib(nibName: "WorkerViewCell", bundle: nil), forCellReuseIdentifier: "WorkerCell")
+        
+        if work != nil {
+            tableView.reloadData()
+        }
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = "Công việc hoàn thành"
+    }
+    
+    fileprivate func configureWorkDetailsCell(cell: FinishedWorkCell) {
+        if let imageString = work?.info?.workName?.image {
+            let url = URL(string: imageString)
+            cell.workImage.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
+        }
+        
+        cell.workNameLabel.text = work?.info?.title
+        cell.workTypeLabel.text = work?.info?.workName?.name
+        cell.workContentLabel.text = "asdlkjaldjqilweijoquweouqioue1o2u309u10293u109euqwjdlajsdlkank"
+        
+        let salary = work?.info?.salary
+        let salaryText = String(describing: salary!)
+        cell.workSalaryLabel.text = salaryText + " VND"
+        
+        let startAt = work?.workTime?.startAt
+        let startAtStr = String(describing: startAt!)
+        cell.workCreateAtLabel.text = String.convertISODateToString(isoDateStr: startAtStr, format: "dd/MM/yyyy")
+        cell.workAddressLabel.text = "asdlkjaldjqilweijoquweouqioue1o2u309u10293u109euqwjdlajsdlkank,nasdnalksn"
+    }
+    
+    fileprivate func configureOwnerCommentsCell(cell: WorkerViewCell) {
+//        if let imageString = work?.info?.workName?.image {
+//            let url = URL(string: imageString)
+//            cell.workImage.kf.setImage(with: url, placeholder: UIImage(named: "nau an"), options: nil, progressBlock: nil, completionHandler: nil)
+//        }
     }
 
 }
@@ -37,15 +75,19 @@ extension FinishedWorkViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell!
-
         if indexPath.section == 0 {
-            cell = tableView.dequeueReusableCell(withIdentifier: "FinishedWorkCell", for: indexPath) as! FinishedWorkCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FinishedWorkCell", for: indexPath) as! FinishedWorkCell
+            
+            self.configureWorkDetailsCell(cell: cell)
+            
+            return cell
         }else {
-            cell = tableView.dequeueReusableCell(withIdentifier: "WorkerCell", for: indexPath) as! WorkerViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerCell", for: indexPath) as! WorkerViewCell
+            
+            self.configureOwnerCommentsCell(cell: cell)
+            
+            return cell
         }
-        
-        return cell
     }
 }
 

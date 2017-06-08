@@ -12,6 +12,10 @@ import IoniconsSwift
 class WorkerViewCell: UITableViewCell {
 
     @IBOutlet weak var arrowForward: UIImageView!
+    @IBOutlet weak var imageUser: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var commentLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

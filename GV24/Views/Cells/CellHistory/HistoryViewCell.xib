@@ -113,16 +113,11 @@
             <connections>
                 <outlet property="btImage" destination="7qy-7n-pTy" id="SZu-F0-M1e"/>
                 <outlet property="createdDate" destination="Qj8-fR-18O" id="fq8-w1-W2o"/>
-                <outlet property="estimateWorkTime" destination="FEp-Ro-KDC" id="Mbo-cp-uRV"/>
+                <outlet property="estimateWorkTime" destination="FEp-Ro-KDC" id="KwQ-Hs-4jO"/>
                 <outlet property="iconAlarm" destination="ADu-3e-VgC" id="eaf-Jf-QEg"/>
-<<<<<<< HEAD
-                <outlet property="imageWork" destination="8EU-8A-QEv" id="frF-r6-AQo"/>
-                <outlet property="timeWork" destination="n9a-BP-wxD" id="bAm-7w-xgN"/>
-=======
                 <outlet property="imageWork" destination="8EU-8A-QEv" id="TK8-9c-cMC"/>
                 <outlet property="lbDist" destination="dRE-zI-Q2n" id="UN1-Mb-i7N"/>
                 <outlet property="timeWork" destination="n9a-BP-wxD" id="yw9-ah-mOR"/>
->>>>>>> 95973e48a12732bf88c9f420207d18e145c4708a
                 <outlet property="workNameLabel" destination="fze-be-NCT" id="BQN-KO-1bH"/>
             </connections>
             <point key="canvasLocation" x="70.5" y="-428.5"/>

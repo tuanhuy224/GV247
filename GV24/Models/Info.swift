@@ -14,6 +14,10 @@ class Info: AppModel {
     var package:Package?
     var workName:WorkName?
     var history:History?
+    var content: String?
+    var salary: Int?
+    var address: Address?
+    
     override init() {
         super.init()
     }
@@ -22,6 +26,9 @@ class Info: AppModel {
         self.title  = json["title"].string
         self.workName = WorkName(json: json["work"])
         self.history = History(json: json["history"])
+        self.content = json["description"].string
+        self.salary = json["price"].int
+        self.address = Address(json: json["address"])
     }   
 }
 class Package: Info {

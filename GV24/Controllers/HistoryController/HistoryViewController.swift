@@ -35,7 +35,7 @@ class HistoryViewController: BaseViewController {
     }
     
     override func decorate() {
-        getDoneWorkInHistory()
+        getWorkList()
         
     }
     
@@ -43,7 +43,7 @@ class HistoryViewController: BaseViewController {
         
     }
     
-    func getDoneWorkInHistory() {
+    func getWorkList() {
         user = UserDefaultHelper.currentUser
         let params = ["process_ID":000000000000000000000005]
         let headers: HTTPHeaders = ["hbbgvauth": "\(UserDefaultHelper.getToken()!)"]
@@ -67,8 +67,6 @@ class HistoryViewController: BaseViewController {
         self.title = "Lịch sự công việc"
         segmentControl.selectedSegmentIndex = 0
     }
-    
-    var currentViewController: UIViewController?
     
     @IBAction func segmentValueChanged(_ segment: UISegmentedControl) {
         switch segment.selectedSegmentIndex {
@@ -108,11 +106,31 @@ class HistoryViewController: BaseViewController {
         
         cell.workNameLabel.text = work.info?.title
         
-        let createAt = work.workTime?.startAt
-        let str = String(describing: createAt!)
+        let startAt = work.workTime?.startAt
+        let startAtString = String(describing: startAt!)
+        let endAt = work.workTime?.endAt
+        let endAtString = String(describing: endAt!)
         
+        cell.createdDate.text = String.convertISODateToString(isoDateStr: startAtString, format: "dd/MM/yyyy")
         
+        let now = Date()
+        let startAtDate = String.convertISODateToDate(isoDateStr: startAtString)
         
+        let executionTime = now.timeIntervalSince(startAtDate!)
+        let secondsInHour: Double = 3600
+        let hoursBetweenDates = Int(executionTime/secondsInHour)
+        let daysBetweenDates = Int(executionTime/86400)
+        let minutesBetweenDates = Int(executionTime/60)
+        
+        if minutesBetweenDates > 60 {
+            cell.estimateWorkTime.text = "\(daysBetweenDates) ngày \(Int(hoursBetweenDates/24)) tiếng"
+        }
+        else {
+            cell.estimateWorkTime.text = "\(minutesBetweenDates) phút trước"
+        }
+        
+        cell.timeWork.text = String.convertISODateToString(isoDateStr: startAtString, format: "HH:mm a")! + " - " + String.convertISODateToString(isoDateStr: endAtString, format: "HH:mm a")!
+
     }
 
 }
@@ -131,7 +149,10 @@ extension HistoryViewController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        navigationController?.pushViewController(FinishedWorkViewController(), animated: true)
+        let vc = FinishedWorkViewController()
+        vc.work = workList[indexPath.item]
+        _ = navigationController?.pushViewController(vc, animated: true)
+        
     }
 }
 extension HistoryViewController:UITableViewDelegate{
